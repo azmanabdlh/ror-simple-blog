@@ -4,7 +4,10 @@
 <ul>
 <% @posts.each do |post| %>
   <li>
-    <%= link_to post.title + " - " + post.body, "/post/"+ post.slug %>
+    <%= link_to post.title + " - " + post.body, "/post/"+ post.slug %> 
+    <% if !post.user.nil? %>
+      - by <%= post.user.name %>
+    <% end %>
   </li>
 <% end %>
 </ul>
