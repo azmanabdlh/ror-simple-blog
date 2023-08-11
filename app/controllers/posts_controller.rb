@@ -16,7 +16,17 @@ class PostsController < ApplicationController
 
   def store   
    req = params.require(:post).permit(:title, :body)
-   PostsRepository.save(req)
+   user = User.find_by(id: session[:user_id])
+   req[:slug] = req[:title].strip.parameterize
+   post = user.posts.build(req)
+   if post.invalid?
+      flash[:error] = post.errors.full_messages.join(", ")
+   end
+
+   post.save
+
+  #  no used
+  #  PostsRepository.save(req)
 
    return redirect_to "/posts"
   end
