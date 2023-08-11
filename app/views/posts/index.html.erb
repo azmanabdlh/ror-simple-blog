@@ -1,0 +1,10 @@
+<h1>Posts#index</h1>
+
+<%= link_to "form post", "/post-new" %>
+<ul>
+<% @posts.each do |post| %>
+  <li>
+    <%= link_to post.title + " - " + post.body, "/post/"+ post.slug %>
+  </li>
+<% end %>
+</ul>

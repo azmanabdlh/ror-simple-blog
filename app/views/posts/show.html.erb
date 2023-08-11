@@ -1,0 +1,21 @@
+<h1><%= @post.title %></h1>
+<p><%= @post.body %></p>
+
+
+
+<form>
+<textarea rows="8" cols="20"></textarea><br/>
+<button>submit your comment</button>
+</form>
+
+
+<% if @post.comments.empty? %>
+<p>Tidak ada komen</p>
+<% end %>
+<ul>
+<% @post.comments.each do |comment| %>
+  <li>
+    <%= comment.body %> - <%= comment.created_at %>    
+  </li>
+<% end %>
+</ul>

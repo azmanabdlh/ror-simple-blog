@@ -1,0 +1,28 @@
+<h1>Login</h1>
+<p>Find me in app/views/auth/login/index.html.erb</p>
+<% if flash[:notice_list] %>
+  <ul>
+    <% flash[:notice_list].each do |notice| %>
+      <%= content_tag :li, "#{notice}!", style: 'color:red;' %>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if flash[:alert] %>
+  <%= content_tag :p, "#{flash[:alert]}!", style: 'color:red;' %>
+<% end %>
+
+<%= form_with method: "post", url: auth_login_process_path do |form| %>
+<div>
+<%= form.label :email %>
+<%= form.text_field :email, placeholder: "email" %>
+</div>
+<div>
+<%= form.label :password %>
+<%= form.text_field :password, placeholder: "password", type: "password" %>
+</div>
+
+<div>
+<%= form.submit "login" %>
+</div>
+<% end %>
