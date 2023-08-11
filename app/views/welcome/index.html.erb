@@ -1,6 +1,9 @@
 <h1>Welcome#index</h1>
 <p>Find me in app/views/welcome/index.html.erb</p>
 
+<% if flash[:success] %>
+  <%= content_tag :p, flash[:success]  %>
+<% end %>
 
 <h1>Halo <%= @current_user.welcome %> </h1>
 
